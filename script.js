@@ -37,3 +37,26 @@ document.getElementById("submit").addEventListener("click", function() {
       "Invalid input. Please enter matrix in correct format.";
   }
 });
+
+document
+  .getElementById("intervalsInput")
+  .addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      handleMatrixRotation();
+    }
+  });
+
+function handleMatrixRotation() {
+  const input = document.getElementById("intervalsInput").value;
+  try {
+    const matrix = JSON.parse(input);
+    rotate(matrix);
+    document.getElementById("output").innerText =
+      "Rotated matrix: " + JSON.stringify(matrix);
+  } catch (error) {
+    document.getElementById("output").innerText =
+      "Invalid input. Please enter matrix in correct format.";
+  }
+}
+
